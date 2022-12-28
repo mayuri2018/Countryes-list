@@ -7,21 +7,29 @@ This is a front end project
 1. Step 1: yarn
 2. Step 2: yarn start
 
-## Logic Requirements
+## Logic Requirements (7 points)
 
 1. Fetch data from this API: `https://fakestoreapi.com/products`
-2. Display data in table
-3. The user can search product by name
-4. Get product detail by this API: `https://fakestoreapi.com/products/productId'`
-5. When the user click to product name or a button it should show product detail
-6. The user can add product to `Cart`and the `Wish list` page
-7. When the use add an item, you should show a message, for example: `A product just added to the cart`
-8. Have a `Loading` page while fetching data
-9. Deploy the project
+2. The user can search product by name
+3. Get product detail by this API: `https://fakestoreapi.com/products/productId'`
+4. When the user click to product name or a button it should show product detail
+5. The user can add product to `Cart`and the `Wish list` page
+6. Have a `Loading` page while fetching data
+7. Deploy the project
 
-## Styling Requirements
+## Styling Requirements (3 points)
 
 1. Font: `font-family: 'Nunito', sans-serif`
+2. Display data in table
+3. When the use add an item, you should show a message, for example: `A product just added to the cart`
+
+## Code style Requirements
+
+1. Clean code: no console.log, no dead code
+2. File structure: clear structure
+3. Divided the project to small components
+4. Separate import from your own file and the import from the package
+5. Type in a separate file
 
 ## Extra requirements
 
