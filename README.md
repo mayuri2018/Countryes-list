@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# FRONT END PROJECT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a front end project
 
-## Available Scripts
+## How to run project
 
-In the project directory, you can run:
+1. Step 1: yarn
+2. Step 2: yarn start
 
-### `yarn start`
+## Logic Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Fetch data from this API: `https://fakestoreapi.com/products`
+2. Display data in table
+3. The user can search product by name
+4. Get product detail by this API: `https://fakestoreapi.com/products/productId'`
+5. When the user click to product name or a button it should show product detail
+6. The user can add product to `Cart`and the `Wish list` page
+7. When the use add an item, you should show a message, for example: `A product just added to the cart`
+8. Have a `Loading` page while fetching data
+9. Deploy the project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Styling Requirements
 
-### `yarn test`
+1. Font: `font-family: 'Nunito', sans-serif`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Extra requirements
 
-### `yarn build`
+ONLY DO THIS PART WHEN YOU HAVE COMPLETED THE REQUIREMENTS PART
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Sorting by product name
+2. Pagination when display list of products (only display 5 products in 1 page)
+3. Footer
+4. Change theme with light and dark
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Useful sources
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. API information: `https://fakestoreapi.com/`
+2. Change theme button/icon:` https://mui.com/material-ui/react-switch/#main-content`
+3. Change theme logic: `https://mui.com/material-ui/customization/dark-mode/`
+4. Alert: `https://mui.com/material-ui/react-snackbar/#main-content`
+5. Table: `https://mui.com/material-ui/react-table/#basic-table`
+6. Font: `https://fonts.google.com/specimen/Nunito`
+7. Deploy: ` https://vercel.com/`, `https://www.netlify.com/ `
