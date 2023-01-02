@@ -15,7 +15,7 @@ The front end project is to practice React with TypeScript and Redux. Completing
 4. When the user click to country name or a button it should show product detail
 5. The country detail should have name, region, population, flag and list of languages
 6. The user can add country to `Favorite` page
-7. When the user add a product to `Wish List` the favorite icon should change the color.
+7. When the user add a country to `Favorite` the favorite icon should change the color.
 8. Have a `Loading` page while fetching data
 9. Deploy the project
 
