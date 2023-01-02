@@ -1,6 +1,6 @@
 # FRONT END PROJECT
 
-This is a front end project
+The front end project is to practice React with TypeScript and Redux. Completing all requirement, you will get 20 points/ 20 points. Good luck and HAVE FUN !!!
 
 ## How to run project
 
@@ -13,7 +13,7 @@ This is a front end project
 2. The user can search country by name
 3. Get country detail by this API: `https://restcountries.com/v3.1/name/{name}`
 4. When the user click to country name or a button it should show product detail
-5. The country detail should have name, region,population, flag and list of languages
+5. The country detail should have name, region, population, flag and list of languages
 6. The user can add country to `Favorite` page
 7. When the user add a product to `Wish List` the favorite icon should change the color.
 8. Have a `Loading` page while fetching data
