@@ -15,7 +15,7 @@ export type Country = {
         openStreetMaps: string;
     },
     population: number;
-    
+    languages: object;
     flags: {
         png: string;
         svg: string;
