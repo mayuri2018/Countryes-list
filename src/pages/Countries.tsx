@@ -5,9 +5,9 @@ import SearchForm from "../components/SearchForm";
 
 export default function Countries(){
     return(
-        <div>
+        <div className="Countries">
             <SearchForm />
-            <CountriesList/>
+            <CountriesList />
         </div>
     )
 }

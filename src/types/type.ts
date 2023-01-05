@@ -18,7 +18,12 @@ export type Country = {
     languages: object;
     flags: {
         png: string;
-        svg: string;
+        svg : string;
+        
     },
+    flag: string;
+    borders: string;
+  capital: string;
+  currencies: { [key: string]: { name: string; symbol: string } };
     
 }

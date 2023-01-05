@@ -1,22 +1,23 @@
-import React, { useEffect } from "react";
-import CountryItem from "./CountriesItem";
-import { useDispatch, useSelector } from "react-redux";
+import CountriesItem from "./CountriesItem";
+import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../redux/strore";
+import { useEffect } from "react";
 import { fetchCountriesData } from "../redux/thunk/countriesthunk";
 
-
+import {
+  Table,
+  TableCell,
+  TableContainer,
+  TableRow,
+  TableBody,
+  IconButton,
+  Paper,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
-
+import { tableCellClasses } from '@mui/material/TableCell';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,62 +39,33 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
-export default function CountriesList() {
+const CountriesList = () => {
   const countriesList = useSelector(
-    (state:RootState)=> state.countries.countries);
-    const dispatch = useDispatch<AppDispatch>();
-//fetch data
-    useEffect(()=>{
-      dispatch(fetchCountriesData());
-    }, [dispatch]);
+    (state: RootState) => state.countries.countries
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(fetchCountriesData());
+  }, [dispatch]);
 
-    console.log(countriesList, "list")
+  const tableTilte = [
+    "Flag",
+    "Name",
+    "Region",
+    "Population",
+    "Languages",
+    "Favorite",
+  ];
   return (
     <div>
+        {countriesList.slice(0, 20).map((country) => (
+              <CountriesItem key={crypto.randomUUID()} country={country} />
+            ))}
 
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Flag</StyledTableCell>
-            <StyledTableCell align="right">Name</StyledTableCell>
-            <StyledTableCell align="right">Region</StyledTableCell>
-            <StyledTableCell align="right">Population</StyledTableCell>
-            <StyledTableCell align="right">Language</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {
-        countriesList.map((item) => <StyledTableRow key={crypto.randomUUID()} >
-              <StyledTableCell component="th" scope="row">
-              <img src={item.flags.png} alt ="flag" />
-              </StyledTableCell>
-              <StyledTableCell align="right">{item.name.common}</StyledTableCell>
-              <StyledTableCell align="right">{item.region}</StyledTableCell>
-              <StyledTableCell align="right">{item.population}</StyledTableCell>
-              <StyledTableCell align="center" className="language">
-                  {item.languages && (
-                    <div>
-                      {Object.keys(item.languages).map((countri, index) => {
-                        return (
-                          <li key={crypto.randomUUID()}>
-                           {countri}: {Object.values(item.languages)[index]}
-                          </li>
-                        );
-                      })}
-                    </div>
-                  )}
-                </StyledTableCell>
-              <BottomNavigationAction label="Favorites" value="favorites"icon={<FavoriteIcon />}/>
-              <BottomNavigationAction label="Favorites" value="favorites"icon={<NavigateNextSharpIcon />}/>
-            </StyledTableRow>
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+      
     </div>
-  )
-}
+  );
+};
+
+export default CountriesList;
 
