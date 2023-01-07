@@ -13,14 +13,17 @@ export type PropType = {
   };
 function App() {
   return(
-    <div className="App">
+    <div>
     <NavBar/>
+    <div className="App">
+    
       <Routes>
         <Route path="" element ={<Home />}></Route>
         <Route path="/countries" element ={<Countries/>}></Route>
         <Route path="/favCountries" element ={<FavCountries />}></Route>
       </Routes>
    
+  </div>
   </div>
   ) 
 }

@@ -1,10 +1,12 @@
-import React from "react";
-import FavCountriesList from "../components/CountriesList";
+import FavCountriesList from "../components/FavCountriesList";
 
-export default function FavCountries(){
-    return(
-        <div>
-            <FavCountriesList/>
-        </div>
-    )
-}
+const Favorites = () => {
+  return (
+    <div className="favorite-page">
+      <h2>Favorite List</h2>
+      <FavCountriesList />
+    </div>
+  );
+};
+
+export default Favorites;

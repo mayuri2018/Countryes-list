@@ -1,11 +1,10 @@
 import React from "react";
+import World_Flag_map from "../assets/World_Flag_map.png";
 
 export default function Home(){
     return(
         <div className="home">
-            <div className="home_header">
-            
-            </div>
+            <img src={World_Flag_map} alt="earth" />
         </div>
     )
 }

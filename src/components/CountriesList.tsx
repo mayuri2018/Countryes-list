@@ -1,71 +1,129 @@
-import CountriesItem from "./CountriesItem";
-import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch, RootState } from "../redux/strore";
-import { useEffect } from "react";
-import { fetchCountriesData } from "../redux/thunk/countriesthunk";
-
 import {
   Table,
   TableCell,
   TableContainer,
+  TableHead,
   TableRow,
-  TableBody,
-  IconButton,
   Paper,
-  Snackbar,
-  Alert,
 } from "@mui/material";
-import { styled } from '@mui/material/styles';
-import TableHead from '@mui/material/TableHead';
 import { tableCellClasses } from '@mui/material/TableCell';
+import { styled } from '@mui/material/styles';
+
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import CountriesItem from "./CountriesItem";
+import { Country } from "../types/type";
+import { fetchCountriesData } from "../redux/thunk/countries";
+import { RootState, AppDispatch } from "../redux/strore";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
+type PropType = {
+  userInput: string;
+};
 
-const CountriesList = () => {
+function createData(
+  flags: {
+    svg: string;
+  },
+  name: {
+    common: string;
+  },
+  region: string,
+  population: number,
+  languages: object,
+  favorite: boolean,
+  capital: string[],
+  maps: {
+    googleMaps: string;
+  }
+): Country {
+  return {
+    flags,
+    name,
+    region,
+    population,
+    languages,
+    favorite,
+    capital,
+    maps,
+  };
+}
+
+export default function CountriesList({ userInput }: PropType) {
+  //const [sortBtn, setSortBtn] = useState(false);
   const countriesList = useSelector(
     (state: RootState) => state.countries.countries
   );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    dispatch(fetchCountriesData());
-  }, [dispatch]);
+    if (userInput === "") {
+      dispatch(fetchCountriesData());
+    }
+  }, [dispatch, userInput]);
 
-  const tableTilte = [
-    "Flag",
-    "Name",
-    "Region",
-    "Population",
-    "Languages",
-    "Favorite",
-  ];
+  const countryRows = countriesList.map((country) => {
+    return createData(
+      country.flags,
+      country.name,
+      country.region,
+      country.population,
+      country.languages,
+      country.favorite,
+      country.capital,
+      country.maps
+    );
+  });
+
   return (
     <div>
-        {countriesList.slice(0, 20).map((country) => (
-              <CountriesItem key={crypto.randomUUID()} country={country} />
-            ))}
-
-      
+      {countriesList.length === 0 && (
+        <div>
+          <i className="fas fa-spinner fa-spin fa-xl" />
+          <p style={{ marginTop: "10px" }}>Loading...</p>
+        </div>
+      )}
+      <TableContainer component={Paper} style={{ marginTop: "50px" }}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">
+                <strong>Flag</strong>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <strong>Name</strong>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <strong>Region</strong>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <strong>Population</strong>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <strong>Languages</strong>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <strong>Favorite</strong>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <strong>More</strong>
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+          {countryRows.map((country) => {
+            return <CountriesItem key={crypto.randomUUID()} country={country} />;
+          })}
+        </Table>
+      </TableContainer>
     </div>
   );
-};
-
-export default CountriesList;
-
+}

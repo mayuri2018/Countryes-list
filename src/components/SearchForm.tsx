@@ -1,37 +1,43 @@
 import TextField from "@mui/material/TextField";
+
 import { useSelector, useDispatch } from "react-redux";
+
 import { RootState } from "../redux/strore";
-import { useState } from "react";
-import countriesActions from "../redux/slice/countries";
+import { countriesActions } from "../redux/slice/countries";
 
-const Search = () => {
-  const [searchInput, setSearchInput] = useState("");
+type PropType = {
+  userInput: string;
+  setUserInput: React.Dispatch<React.SetStateAction<string>>;
+};
 
+const Search = ({ userInput, setUserInput }: PropType) => {
   const dispatch = useDispatch();
   const countriesList = useSelector(
     (state: RootState) => state.countries.countries
   );
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    setUserInput(e.target.value);
     searchHandler();
   };
 
   const searchHandler = () => {
     const result = countriesList.filter((country) =>
-      country.name.common.toLowerCase().includes(searchInput.toLowerCase())
+      country.name.common.toLowerCase().includes(userInput.toLowerCase())
     );
-    console.log(result, "result");
-    dispatch(countriesActions.getCountriesData(result));
+    dispatch(countriesActions.getCountryData(result));
   };
-  console.log(searchInput);
+
   return (
-    <div className="form">
+    <div>
       <TextField
         id="standard-basic"
-        label="Standard"
+        label="Search country"
         variant="standard"
         onChange={inputHandler}
+        InputLabelProps={{
+          style: { fontFamily: "'Nunito', sans-serif" },
+        }}
       />
     </div>
   );

@@ -1,30 +1,56 @@
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import { IconButton } from "@mui/material";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import {
+  List,
+  ListItem,
+  Divider,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  Typography,
+  IconButton,
+  Snackbar,
+  Alert,
+} from "@mui/material";
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+
+import { Fragment, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Country } from "../types/type";
-import { Fragment } from "react";
-import { useDispatch } from "react-redux";
-import countriesActions from "../redux/slice/countries";
+import { countriesActions } from "../redux/slice/countries"; 
+import { NoEncryption } from "@mui/icons-material";
 
 type PropType = {
   favCountry: Country;
 };
 const FavoriteItem = ({ favCountry }: PropType) => {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const removeFromFavorite = () => {
+    dispatch(countriesActions.removeFromFav(favCountry.name.common));
+    handleClick();
+  };
+  console.log(open);
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="favorite-item">
       <List
         sx={{
           width: "100%",
           maxWidth: 360,
-          bgcolor: "background.paper",
+          bgcolor: "none",
           position: "relative",
         }}
       >
@@ -33,7 +59,7 @@ const FavoriteItem = ({ favCountry }: PropType) => {
             <Avatar
               alt="Remy Sharp"
               src={favCountry.flags.svg}
-              sx={{ border: 1 }}
+              sx={{ border: 1}}
             />
           </ListItemAvatar>
           <ListItemText
@@ -62,14 +88,17 @@ const FavoriteItem = ({ favCountry }: PropType) => {
         </ListItem>
         <IconButton
           sx={{ position: "absolute", right: 0, bottom: 20 }}
-          onClick={() =>
-            dispatch(countriesActions.removeFromFav(favCountry.name.common))
-          }
+          onClick={removeFromFavorite}
         >
-          <DeleteForeverIcon color="error" />
+          <DisabledByDefaultIcon color="error" />
         </IconButton>
         <Divider variant="inset" component="li" />
       </List>
+      <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          {favCountry.name.common} remove from favorite list!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

@@ -1,13 +1,17 @@
-import React from "react";
-import CountriesList from "../components/CountriesList";
+import { useState } from "react";
+
 import SearchForm from "../components/SearchForm";
+import CountriesList from "../components/CountriesList";
 
+const Countries = () => {
+  const [userInput, setUserInput] = useState<string>("");
 
-export default function Countries(){
-    return(
-        <div className="Countries">
-            <SearchForm />
-            <CountriesList />
-        </div>
-    )
-}
+  return (
+    <div className="countries-page">
+      <SearchForm userInput={userInput} setUserInput={setUserInput} />
+      <CountriesList userInput={userInput} />
+    </div>
+  );
+};
+
+export default Countries;

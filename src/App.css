@@ -1,77 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Rajdhani&display=swap');
 
+*{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
 .App {
   text-align: center;
-  font-family: 'Nunito', sans-serif;
+  padding: 100px 50px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-th.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.css-132a6sb-MuiTableCell-root{
-  width: 8%;
-}
-img {
+.home img {
   width: 100%;
 }
-.css-1nslmh4-MuiTableCell-root.MuiTableCell-head {
-  text-align: center;
-}
-.css-1bhpkcd-MuiTableCell-root.MuiTableCell-body {
-  font-size: 14px;
-  text-align: center;
-  font-family: 'Nunito', sans-serif;
-}
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-.css-imwso6-MuiBottomNavigationAction-label {
-  font-family: 'Nunito', sans-serif;
-}
-.form {
-  margin-bottom: 2%;
-}
-.home_header{
-  color:white;
-  
-  min-height: 500px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("./assets/World_Flag_map.png");
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* -------------------- Favorite Style -------------------- */
+
+.favorite-page{
+  min-height: 56vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
+}
+.favorite-item{
+display: flex;
+justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* -------------------- Country Style -------------------- */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.countries-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.country-item img{
+  width: 100px;
+  border: 1px solid lightgray;
+}
+.country-item ul{
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
 }

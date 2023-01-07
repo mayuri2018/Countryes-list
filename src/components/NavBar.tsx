@@ -28,8 +28,8 @@ export default function NavBar() {
   const favList = useSelector((state: RootState) => state.countries.favorite);
 
   return (
-    <Box sx={{ flexGrow: 1,width:"100%"}}>
-      
+    <Box sx={{ flexGrow: 1, position: "fixed", width: "100%", zIndex: "100" }}>
+      <AppBar position="static" >
         <Toolbar>
           <IconButton
             size="large"
@@ -57,17 +57,16 @@ export default function NavBar() {
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              Countries
+              Countryes
             </Typography>
           </MenuItem>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <MenuItem component={Link} to={"/FavCountries"}>
+            <MenuItem component={Link} to={"/favcountries"}>
               <StyledBadge badgeContent={favList.length} color="error">
                 <FavoriteIcon />
               </StyledBadge>
             </MenuItem>
-            
             <IconButton
               size="large"
               edge="end"
@@ -89,7 +88,7 @@ export default function NavBar() {
             </IconButton>
           </Box>
         </Toolbar>
-      
+      </AppBar>
     </Box>
   );
 }
