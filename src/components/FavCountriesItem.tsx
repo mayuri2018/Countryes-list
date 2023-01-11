@@ -14,15 +14,13 @@ import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
-
 import { Country } from "../types/type";
 import { countriesActions } from "../redux/slice/countries"; 
-import { NoEncryption } from "@mui/icons-material";
 
 type PropType = {
   favCountry: Country;
 };
-const FavoriteItem = ({ favCountry }: PropType) => {
+export default function FavCountriesItem({ favCountry }: PropType) {
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
@@ -82,7 +80,9 @@ const FavoriteItem = ({ favCountry }: PropType) => {
                 >
                   Population: {favCountry.population}
                 </Typography>
+                
               </Fragment>
+              
             }
           />
         </ListItem>
@@ -102,4 +102,3 @@ const FavoriteItem = ({ favCountry }: PropType) => {
     </div>
   );
 };
-export default FavoriteItem;

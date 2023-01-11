@@ -42,9 +42,6 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography fontSize="20px">
-             COUNTRY
-          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <MenuItem component={Link} to={"/"}>

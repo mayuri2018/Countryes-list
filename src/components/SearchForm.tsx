@@ -10,7 +10,7 @@ type PropType = {
   setUserInput: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Search = ({ userInput, setUserInput }: PropType) => {
+export default function Search({ userInput, setUserInput }: PropType) {
   const dispatch = useDispatch();
   const countriesList = useSelector(
     (state: RootState) => state.countries.countries
@@ -42,5 +42,3 @@ const Search = ({ userInput, setUserInput }: PropType) => {
     </div>
   );
 };
-
-export default Search;

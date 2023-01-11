@@ -42,32 +42,27 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography fontSize="20px">
-             COUNTRY
-          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <MenuItem component={Link} to={"/"}>
-          <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
              <HomeIcon/>
-            </IconButton>
+            </Typography>
           </MenuItem>
           <MenuItem component={Link} to={"/countries"}>
-          <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
              <PublicIcon/>
-            </IconButton>
+            </Typography>
           </MenuItem>
             <MenuItem component={Link} to={"/favcountries"}>
               <StyledBadge badgeContent={favList.length} color="error">

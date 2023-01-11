@@ -44,7 +44,7 @@ type PropType = {
   country: Country;
 };
 
-const CountryItem = ({ country }: PropType) => {
+export default function CountriesItem ({ country }: PropType) {
   const favoriteState = useSelector(
     (state: RootState) => state.countries.favorite
   );
@@ -89,21 +89,19 @@ const CountryItem = ({ country }: PropType) => {
         <StyledTableCell align="center">{country.population}</StyledTableCell>
         <StyledTableCell align="center">
           {country.languages && (
-            <ul>
+            <p>
               {Object.keys(country.languages).map((item, index) => {
                 return (
                   <li key={crypto.randomUUID()}>
-                    
-                      {item}: {Object.values(country.languages)[index]}
-                    
+                    {Object.values(country.languages)[index]} 
                   </li>
                 );
               })}
-            </ul>
+            </p>
           )}
         </StyledTableCell>
         <StyledTableCell align="center">
-          <Tooltip title="Add to favorite list">
+          <Tooltip title="Add favorite">
             <IconButton
               aria-label="add to favorites"
               onClick={favoriteClickHandler}
@@ -113,7 +111,7 @@ const CountryItem = ({ country }: PropType) => {
           </Tooltip>
         </StyledTableCell>
         <StyledTableCell align="center">
-          <Tooltip title="More information">
+          <Tooltip title="More info">
             <Link to={`/countries/${country.name.common}`}>
               <IconButton>
                 <MoreHorizIcon />
@@ -134,4 +132,3 @@ const CountryItem = ({ country }: PropType) => {
     </TableBody>
   );
 };
-export default CountryItem;

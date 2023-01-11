@@ -8,8 +8,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import HomeIcon from '@mui/icons-material/Home';
-import PublicIcon from '@mui/icons-material/Public';
 
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/strore";
@@ -42,32 +40,27 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography fontSize="20px">
-             COUNTRY
-          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <MenuItem component={Link} to={"/"}>
-          <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
              <HomeIcon/>
-            </IconButton>
+            </Typography>
           </MenuItem>
           <MenuItem component={Link} to={"/countries"}>
-          <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
-             <PublicIcon/>
-            </IconButton>
+              Countryes
+            </Typography>
           </MenuItem>
             <MenuItem component={Link} to={"/favcountries"}>
               <StyledBadge badgeContent={favList.length} color="error">

@@ -39,10 +39,15 @@ function createData(
     common: string;
   },
   region: string,
+  subregion : string,
   population: number,
   languages: object,
   favorite: boolean,
   capital: string[],
+  timezones:string [],
+  capitalInfo:{
+    latlng:string []
+  },
   maps: {
     googleMaps: string;
   }
@@ -51,10 +56,13 @@ function createData(
     flags,
     name,
     region,
+    subregion,
     population,
     languages,
     favorite,
     capital,
+    capitalInfo,
+    timezones,
     maps,
   };
 }
@@ -76,10 +84,13 @@ export default function CountriesList({ userInput }: PropType) {
       country.flags,
       country.name,
       country.region,
+      country.subregion,
       country.population,
       country.languages,
       country.favorite,
       country.capital,
+      country.timezones,
+      country.capitalInfo,
       country.maps
     );
   });
@@ -87,7 +98,7 @@ export default function CountriesList({ userInput }: PropType) {
   return (
     <div>
       {countriesList.length === 0 && (
-        <div>
+        <div className = "loader">
           <i className="fas fa-spinner fa-spin fa-xl" />
           <p style={{ marginTop: "10px" }}>Loading...</p>
         </div>

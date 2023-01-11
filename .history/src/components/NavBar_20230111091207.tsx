@@ -42,7 +42,7 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography fontSize="20px">
+          <Typography fontSize="30px">
              COUNTRY
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
