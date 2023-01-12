@@ -10,8 +10,8 @@ import {
   Box
 } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
+import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined';
 import { tableCellClasses } from '@mui/material/TableCell';
 import { styled } from '@mui/material/styles';
 
@@ -24,6 +24,11 @@ import { countriesActions } from "../../redux/slice/countries";
 import { fetchCountriesData } from "../../redux/thunk/countries";
 import { RootState, AppDispatch } from "../../redux/strore";
 
+type PropType = {
+  userInput: string;
+};
+
+// Table style from MUI
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -33,10 +38,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }));
-
-type PropType = {
-  userInput: string;
-};
 
 function createData(
   flags: {
@@ -155,14 +156,15 @@ export default function CountriesList({ userInput }: PropType) {
               </StyledTableCell>
               <StyledTableCell align="center">
                 <strong>Name</strong>
-                <Tooltip title="Sort by name">
+                <Tooltip title="ordering by name">
                   {sortBtn ? (
                     <IconButton onClick={decSortedCoutry}>
-                      <ArrowDownwardIcon fontSize="small"/>
+                      
+                      <ArrowUpwardOutlinedIcon fontSize="small"/>
                     </IconButton>
                   ) : (
                     <IconButton onClick={ascSortedCoutry}>
-                      <ArrowUpwardIcon fontSize="small" />
+                      <ArrowDownwardOutlinedIcon fontSize="small" />
                     </IconButton>
                   )}
                 </Tooltip>

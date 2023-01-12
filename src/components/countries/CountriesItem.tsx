@@ -19,6 +19,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/strore";  
 import { Country } from "../../types/type"; 
 import { countriesActions } from "../../redux/slice/countries"; 
+
+type PropType = {
+  country: Country;
+};
+
+//table style from MUI
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -39,9 +45,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-type PropType = {
-  country: Country;
-};
 
 export default function CountriesItem ({ country }: PropType) {
   const favoriteState = useSelector(

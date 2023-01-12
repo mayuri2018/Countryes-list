@@ -1,6 +1,6 @@
 import FavCountriesList from "../../components/favCountries/FavCountriesList";
 
-const Favorites = () => {
+export default function favCountries (){
   return (
     <div className="favorite-page">
       <h2>Favorite List</h2>
@@ -8,5 +8,3 @@ const Favorites = () => {
     </div>
   );
 };
-
-export default Favorites;

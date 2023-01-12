@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/strore";
-import {Snackbar, Alert} from "@mui/material";
 import {useState } from "react";
-
 import FavCountriesItem from "./FavCountriesItem";
+
+import {Snackbar, Alert} from "@mui/material";
 
 export default function FavCountriesList (){
   const FavCountriesList = useSelector((state: RootState) => state.countries.favorite);
+
+  // snackbar alert from MUI
   const [open, setOpen] = useState(false);
   const handleClose = (
     event?: React.SyntheticEvent | Event,
