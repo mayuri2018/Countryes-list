@@ -3,10 +3,10 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
-import Home from "./pages/Home";
-import Countries from "./pages/Countries";
-import FavCountries from "./pages/FavCountries";
-import CountriesInformation from "./pages/ContriesInformation";
+import Home from "./pages/home/Home";
+import Countries from "./pages/countries/Countries";
+import FavCountries from "./pages/favorites/FavCountries";
+import CountriesInformation from "./pages/countriesInfo/ContriesInformation";
 
 
 function App() {

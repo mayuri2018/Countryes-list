@@ -1,4 +1,4 @@
-import FavCountriesList from "../components/favCountries/FavCountriesList";
+import FavCountriesList from "../../components/favCountries/FavCountriesList";
 
 const Favorites = () => {
   return (

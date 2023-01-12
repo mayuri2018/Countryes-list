@@ -7,7 +7,9 @@ import {
   Paper,
   IconButton,
   Tooltip,
+  Box
 } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { tableCellClasses } from '@mui/material/TableCell';
@@ -137,10 +139,12 @@ export default function CountriesList({ userInput }: PropType) {
   return (
     <div>
       {countriesList.length === 0 && (
-        <div className = "loader">
-          <i className="fas fa-spinner fa-spin fa-xl" />
-          <p style={{ marginTop: "10px" }}>Loading...</p>
-        </div>
+        <div className="loader">
+        <Box className="loading" sx={{ ml: 10, mt: 3, width: "80%" }}>
+        Loading....
+        <CircularProgress />
+      </Box>
+      </div>
       )}
       <TableContainer component={Paper} style={{ marginTop: "50px" }}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -154,7 +158,7 @@ export default function CountriesList({ userInput }: PropType) {
                 <Tooltip title="Sort by name">
                   {sortBtn ? (
                     <IconButton onClick={decSortedCoutry}>
-                      <ArrowDownwardIcon fontSize="small" />
+                      <ArrowDownwardIcon fontSize="small"/>
                     </IconButton>
                   ) : (
                     <IconButton onClick={ascSortedCoutry}>
