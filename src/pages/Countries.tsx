@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import SearchForm from "../components/SearchForm";
-import CountriesList from "../components/CountriesList";
+import SearchForm from "../components/search/SearchForm";
+import CountriesList from "../components/countries/CountriesList";
 
 const Countries = () => {
   const [userInput, setUserInput] = useState<string>("");

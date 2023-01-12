@@ -16,10 +16,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { RootState } from "../redux/strore";  
-import { Country } from "../types/type";
-import { countriesActions } from "../redux/slice/countries";
-
+import { RootState } from "../../redux/strore";  
+import { Country } from "../../types/type"; 
+import { countriesActions } from "../../redux/slice/countries"; 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -124,7 +123,7 @@ export default function CountriesItem ({ country }: PropType) {
               severity="success"
               sx={{ width: "100%" }}
             >
-              {country.name.common} add to favorite list!
+             add to favorite list!
             </Alert>
           </Snackbar>
         </StyledTableCell>

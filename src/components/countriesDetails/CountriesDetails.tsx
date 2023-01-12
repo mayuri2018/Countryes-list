@@ -15,7 +15,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 import { Link as RouterLink } from "react-router-dom";
-import { Country } from "../types/type";
+import { Country } from "../../types/type"; 
 
 type PropType = {
   countryDetail: Country;

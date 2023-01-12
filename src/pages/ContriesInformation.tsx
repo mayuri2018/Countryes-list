@@ -1,47 +1,24 @@
 import { useParams } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { AppDispatch, RootState } from "../redux/strore";
+import { useDispatch, useSelector } from "react-redux";
+import fetchCountryDetailData from "../redux/thunk/countriesInformation";
+import CountriesDetails from "../components/countriesDetails/CountriesDetails";
 
-import { Country } from "../types/type";
-import CountriesDetails from "../components/CountriesDetails";
-
-const ContriesInformation = () => {
-  const [countryDetail, setCountryDetail] = useState<Country>({
-    name: {
-      common: "",
-    },
-    region: "",
-    subregion : "",
-    population: 0,
-    languages: {},
-    flags: {
-      svg: "",
-    },
-    capital: [],
-    timezones: [],
-    capitalInfo:{
-      latlng:[]
-    },
-    maps: {
-      googleMaps: "",
-    },
-    favorite: false,
-  });
+export default function ContriesInformation () {
   const { name } = useParams();
-  const url = `https://restcountries.com/v3.1/name/${name}`
-  const getCountryData = () => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setCountryDetail(data[0]));
-  };
-  const cachedFetch = useCallback(getCountryData, [url]);
+  const countryDetail = useSelector(
+    (state: RootState) => state.countries.countries
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
-    cachedFetch();
-  }, [cachedFetch]);
+    dispatch(fetchCountryDetailData(name));
+  }, [dispatch, name]);
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <CountriesDetails countryDetail={countryDetail} />
+      <CountriesDetails countryDetail={countryDetail[0]} />
     </div>
   );
 };
-
-export default ContriesInformation;

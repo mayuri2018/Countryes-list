@@ -12,7 +12,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PublicIcon from '@mui/icons-material/Public';
 
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/strore";
+import { RootState } from "../../redux/strore"; 
 
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";

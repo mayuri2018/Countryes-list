@@ -7,41 +7,26 @@ import {
   Avatar,
   Typography,
   IconButton,
-  Snackbar,
-  Alert,
 } from "@mui/material";
-import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { Country } from "../types/type";
-import { countriesActions } from "../redux/slice/countries"; 
+import { Country } from "../../types/type";
+import { countriesActions } from "../../redux/slice/countries";
 
 type PropType = {
   favCountry: Country;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export default function FavCountriesItem({ favCountry }: PropType) {
+export default function FavCountriesItem({ favCountry, setOpen }: PropType) {
   const dispatch = useDispatch();
-
-  const [open, setOpen] = useState(false);
-  const handleClick = () => {
-    setOpen(true);
-  };
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
 
   const removeFromFavorite = () => {
     dispatch(countriesActions.removeFromFav(favCountry.name.common));
-    handleClick();
+    setOpen (true)
   };
-  console.log(open);
+
   return (
     <div className="favorite-item">
       <List
@@ -57,7 +42,7 @@ export default function FavCountriesItem({ favCountry }: PropType) {
             <Avatar
               alt="Remy Sharp"
               src={favCountry.flags.svg}
-              sx={{ border: 1}}
+              sx={{ border: 1 }}
             />
           </ListItemAvatar>
           <ListItemText
@@ -80,25 +65,20 @@ export default function FavCountriesItem({ favCountry }: PropType) {
                 >
                   Population: {favCountry.population}
                 </Typography>
-                
               </Fragment>
-              
             }
           />
         </ListItem>
         <IconButton
           sx={{ position: "absolute", right: 0, bottom: 20 }}
+          aria-label="removed from favorite list"
           onClick={removeFromFavorite}
         >
           <DisabledByDefaultIcon color="error" />
         </IconButton>
         <Divider variant="inset" component="li" />
+        
       </List>
-      <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          {favCountry.name.common} remove from favorite list!
-        </Alert>
-      </Snackbar>
     </div>
   );
 };
