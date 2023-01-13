@@ -20,7 +20,7 @@ export default function Footer() {
             component="div"
             sx={{ display: "block", margin: "0 20px" }}
           >
-            <h1>COUNTRY</h1>
+            <h1>Coutryes</h1>
           </Typography>
           <Box sx={{ flexGrow: 1 }}>
           <div className="contact">
