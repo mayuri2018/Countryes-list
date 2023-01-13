@@ -18,9 +18,9 @@ export default function Footer() {
             variant="body1"
             noWrap
             component="div"
-            sx={{ display: "block", margin: "0 20px" }}
+            sx={{ display: "block", margin: "0 20px", fontSize:"20px"}}
           >
-            <h1>COUNTRY</h1>
+            <h2>COUNTRY</h2>
           </Typography>
           <Box sx={{ flexGrow: 1 }}>
           <div className="contact">

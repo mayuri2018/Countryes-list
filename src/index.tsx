@@ -6,18 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import{BrowserRouter} from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './redux/strore';
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Nunito", "sans-serif"].join(","),
+  },
+});
 root.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
     <BrowserRouter>
     <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-      
+    </ThemeProvider>  
     
   </React.StrictMode>
 );
