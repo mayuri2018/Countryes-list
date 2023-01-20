@@ -1,3 +1,6 @@
+<h1>DEMO</h1>
+<a href="https://isa-6-front-end-project-amber.vercel.app/">DEMOLINK</a>
+
 # FRONT END PROJECT
 
 The front end project is to practice React with TypeScript and Redux. Completing all requirement, you will get 20 points/ 20 points. Good luck and HAVE FUN !!!
